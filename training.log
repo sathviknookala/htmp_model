@@ -1,0 +1,191 @@
+Warning: TensorFlow not available. Neural network models will not work.
+Warning: CatBoost not available. Install with: pip install catboost
+Warning: bayesian-optimization not available. Install with: pip install bayesian-optimization
+================================================================================
+TRAINING MODELS FOR KAGGLE SUBMISSION
+================================================================================
+
+Loaded training data: (8990, 98)
+Using data from date_id 7000: 1990 samples
+Valid training samples: 1990
+Initial features: 160
+
+================================================================================
+FEATURE SELECTION
+================================================================================
+Training quick model for feature importance...
+Training on full dataset...
+
+Top 20 most important features:
+                    feature  importance
+153               zscore_60    1.200618
+151               zscore_20    0.181624
+152               zscore_40    0.130893
+156                 rank_60    0.044216
+104    target_rolling_min_5    0.043989
+105    target_rolling_max_5    0.040177
+107            target_ewm_5    0.030285
+135             momentum_40    0.006768
+121   target_rolling_std_40    0.006745
+136             momentum_60    0.005362
+110   target_rolling_min_10    0.004011
+134             momentum_20    0.003772
+127   target_rolling_std_60    0.003040
+116   target_rolling_min_20    0.002876
+155                 rank_40    0.002696
+154                 rank_20    0.002643
+126  target_rolling_mean_60    0.002286
+115   target_rolling_std_20    0.002242
+117   target_rolling_max_20    0.001735
+157                P10_x_P8    0.001157
+============================================================
+COMPREHENSIVE FEATURE SELECTION
+============================================================
+Starting with 160 features
+
+1. Filtering by null ratio...
+Removed 0 features with high null ratios
+   Remaining: 160 features
+
+2. Filtering by variance...
+Removed 57 low-variance features
+   Remaining: 103 features
+
+3. Removing highly correlated features...
+Removed 9 highly correlated features
+Dropped features: ['I5', 'E3', 'rank_40', 'V7', 'V10', 'zscore_40', 'zscore_20', 'rank_20', 'D1']...
+   Remaining: 94 features
+
+4. Selecting by feature importance...
+   Remaining: 51 features
+
+============================================================
+FEATURE SELECTION COMPLETE: 51 features selected
+============================================================
+
+Selected 51 features
+
+================================================================================
+TRAINING FINAL MODELS
+================================================================================
+
+1. Training LightGBM (primary model)...
+Training on full dataset...
+
+Top 20 most important features:
+      feature  importance
+48  zscore_60    1.475846
+49    rank_60    0.139408
+39         S8    0.025663
+14         M1    0.020985
+30         P8    0.006341
+15        M10    0.003851
+25        P11    0.002608
+2         E15    0.002269
+42         V2    0.002208
+24        P10    0.001960
+50   P10_x_P8    0.001829
+31         S1    0.001822
+17        M14    0.001793
+16        M13    0.001714
+22         M6    0.001676
+34         S3    0.001550
+44         V5    0.001295
+28         P2    0.001068
+33         S2    0.001063
+37         S6    0.000949
+
+2. Training XGBoost...
+Training XGBoost on 1592 samples, validating on 398 samples...
+[0]	train-rmse:0.01079	val-rmse:0.00901
+[100]	train-rmse:0.00189	val-rmse:0.00345
+[200]	train-rmse:0.00157	val-rmse:0.00331
+[300]	train-rmse:0.00155	val-rmse:0.00330
+[400]	train-rmse:0.00154	val-rmse:0.00330
+[500]	train-rmse:0.00153	val-rmse:0.00329
+[577]	train-rmse:0.00153	val-rmse:0.00329
+
+Top 20 most important features:
+      feature  importance
+48  zscore_60    0.002728
+49    rank_60    0.001385
+14         M1    0.000292
+39         S8    0.000198
+42         V2    0.000162
+30         P8    0.000071
+24        P10    0.000042
+15        M10    0.000040
+23         P1    0.000037
+2         E15    0.000037
+7          I1    0.000036
+41        V12    0.000035
+37         S6    0.000034
+28         P2    0.000032
+44         V5    0.000032
+11         I7    0.000032
+4         E17    0.000031
+31         S1    0.000031
+16        M13    0.000027
+46         V8    0.000026
+XGBoost trained successfully
+
+3. Training CatBoost...
+CatBoost not available: CatBoost is required. Install with: pip install catboost
+
+Trained 2 models: ['lightgbm', 'xgboost']
+
+================================================================================
+SAVING MODELS
+================================================================================
+Saved: gbm_model.txt
+Saved: xgb_model.json
+Saved: feature_engineer.pkl
+Saved: feature_selector.pkl
+Saved: allocation_strategy.pkl
+Saved: ensemble.pkl
+Saved: model_metadata.pkl
+
+================================================================================
+CREATING KAGGLE DATASET METADATA
+================================================================================
+Saved: dataset-metadata.json
+
+================================================================================
+TRAINING COMPLETE - SUMMARY
+================================================================================
+
+Models trained: ['lightgbm', 'xgboost']
+Features selected: 51
+Training samples: 1990
+
+Files ready for Kaggle upload:
+  - gbm_model.txt (226.3 KB)
+  - gbm_model.txt.metadata (2.2 KB)
+  - feature_engineer.pkl (0.1 KB)
+  - feature_selector.pkl (0.4 KB)
+  - allocation_strategy.pkl (0.2 KB)
+  - model_metadata.pkl (0.4 KB)
+  - xgb_model.json (502.1 KB)
+  - xgb_model.json.metadata (2.1 KB)
+  - ensemble.pkl (0.1 KB)
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Create Kaggle dataset:
+   cd models
+   kaggle datasets create
+
+2. Or update existing dataset:
+   kaggle datasets version -p models -m 'Updated with new models'
+
+3. Update kaggle_submission.py with your dataset path
+
+4. Test locally:
+   python kaggle_submission.py
+
+5. Submit to competition:
+   bash submit_kaggle.sh
+
+================================================================================

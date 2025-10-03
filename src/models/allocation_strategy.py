@@ -141,10 +141,41 @@ class AllocationStrategy:
         
         return allocation
     
+    def confidence_based_allocation(self, predicted_return: float,
+                                   confidence_score: float,
+                                   market_volatility: float) -> float:
+        """
+        Dynamic allocation based on model confidence
+        Higher confidence = more aggressive positioning
+        
+        Args:
+            predicted_return: Model prediction
+            confidence_score: Confidence score (0-1)
+            market_volatility: Current market volatility
+            
+        Returns:
+            Allocation weight (0 to 2)
+        """
+        # Base allocation from volatility scaling
+        base_allocation = self.volatility_scaled_allocation(
+            predicted_return,
+            market_volatility
+        )
+        
+        # Adjust by confidence
+        # High confidence -> move towards extremes (0 or 2)
+        # Low confidence -> move towards neutral (1)
+        neutral = 1.0
+        confidence_adjusted = neutral + confidence_score * (base_allocation - neutral)
+        
+        # Ensure bounds
+        return np.clip(confidence_adjusted, 0.0, 2.0)
+    
     def ensemble_allocation(self, predictions: dict,
                            market_volatility: float,
                            risk_free_rate: float = 0.0,
-                           strategy: str = 'volatility_scaled') -> float:
+                           strategy: str = 'volatility_scaled',
+                           use_confidence: bool = True) -> float:
         """
         Combine multiple model predictions into allocation
         
@@ -153,6 +184,7 @@ class AllocationStrategy:
             market_volatility: Current market volatility
             risk_free_rate: Risk-free rate
             strategy: Allocation strategy to use
+            use_confidence: Whether to use confidence-based adjustment
             
         Returns:
             Final allocation weight (0 to 2)
@@ -166,19 +198,27 @@ class AllocationStrategy:
         confidence = 1.0 - np.clip(prediction_std / max_std, 0.0, 1.0)
         
         # Choose strategy
-        if strategy == 'simple':
-            allocation = self.simple_allocation(avg_prediction, confidence)
-        elif strategy == 'kelly':
-            allocation = self.kelly_allocation(avg_prediction, market_volatility, risk_free_rate)
-        elif strategy == 'volatility_scaled':
-            allocation = self.volatility_scaled_allocation(avg_prediction, market_volatility)
+        if use_confidence and strategy != 'simple':
+            # Use confidence-based allocation
+            allocation = self.confidence_based_allocation(
+                avg_prediction,
+                confidence,
+                market_volatility
+            )
         else:
-            # Default: weighted by confidence
-            if avg_prediction > 0:
-                allocation = 1.0 + confidence
+            if strategy == 'simple':
+                allocation = self.simple_allocation(avg_prediction, confidence)
+            elif strategy == 'kelly':
+                allocation = self.kelly_allocation(avg_prediction, market_volatility, risk_free_rate)
+            elif strategy == 'volatility_scaled':
+                allocation = self.volatility_scaled_allocation(avg_prediction, market_volatility)
             else:
-                allocation = 1.0 - confidence
-            allocation = np.clip(allocation, 0.0, 2.0)
+                # Default: weighted by confidence
+                if avg_prediction > 0:
+                    allocation = 1.0 + confidence
+                else:
+                    allocation = 1.0 - confidence
+                allocation = np.clip(allocation, 0.0, 2.0)
         
         return allocation
     

@@ -1,7 +1,47 @@
 {
   "title": "Hull Tactical Models",
   "id": "eshaanganguly/hull-tactical-models",
-  "licenses": [{"name": "CC0-1.0"}]
+  "licenses": [
+    {
+      "name": "CC0-1.0"
+    }
+  ],
+  "resources": [
+    {
+      "path": "gbm_model.txt",
+      "description": "LightGBM model"
+    },
+    {
+      "path": "gbm_model.txt.metadata",
+      "description": "LightGBM model metadata"
+    },
+    {
+      "path": "feature_engineer.pkl",
+      "description": "Feature engineering pipeline"
+    },
+    {
+      "path": "feature_selector.pkl",
+      "description": "Feature selector"
+    },
+    {
+      "path": "allocation_strategy.pkl",
+      "description": "Allocation strategy"
+    },
+    {
+      "path": "model_metadata.pkl",
+      "description": "Model configuration metadata"
+    },
+    {
+      "path": "xgb_model.json",
+      "description": "XGBoost model"
+    },
+    {
+      "path": "xgb_model.json.metadata",
+      "description": "XGBoost metadata"
+    },
+    {
+      "path": "ensemble.pkl",
+      "description": "Ensemble configuration"
+    }
+  ]
 }
-
-

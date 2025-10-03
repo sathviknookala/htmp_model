@@ -1,0 +1,55 @@
+[{"stream_name":"stdout","time":6.248246006,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":6.248341816,"data":"INITIALIZING FINAL ENSEMBLE PREDICTOR\n"}
+,{"stream_name":"stdout","time":6.2483503559999996,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":6.248355257,"data":"Loading models...\n"}
+,{"stream_name":"stdout","time":6.254226646,"data":"  ✓ Loaded 51 features\n"}
+,{"stream_name":"stdout","time":16.406767198,"data":"[LightGBM] [Warning] Ignoring unrecognized parameter 'bagging_by_query' found in model string.\n"}
+,{"stream_name":"stdout","time":16.406813361,"data":"  ✓ LightGBM loaded\n"}
+,{"stream_name":"stdout","time":16.742700896,"data":"  ✓ XGBoost loaded\n"}
+,{"stream_name":"stdout","time":16.742738065,"data":"\n"}
+,{"stream_name":"stdout","time":16.742744433,"data":"✓ Loaded 2 models\n"}
+,{"stream_name":"stdout","time":16.742749656,"data":"Loading training data...\n"}
+,{"stream_name":"stdout","time":17.117374385,"data":"  ✓ Loaded 500 historical samples\n"}
+,{"stream_name":"stdout","time":17.117444039,"data":"\n"}
+,{"stream_name":"stdout","time":17.117454275,"data":"✓ Predictor ready!\n"}
+,{"stream_name":"stdout","time":17.117460931,"data":"======================================================================\n"}
+,{"stream_name":"stdout","time":17.397132682,"data":"\n"}
+,{"stream_name":"stdout","time":17.397171109,"data":"Prediction #1:\n"}
+,{"stream_name":"stdout","time":17.397176986,"data":"  Individual: [-0.0005471469057089207, -0.0008336566970683634]\n"}
+,{"stream_name":"stdout","time":17.397182338,"data":"  Ensemble: -0.000690\n"}
+,{"stream_name":"stdout","time":17.398506006,"data":"  Scale factor: 0.001\n"}
+,{"stream_name":"stdout","time":17.398536905,"data":"  Allocation: 0.3096\n"}
+,{"stream_name":"stdout","time":17.398543353,"data":"  Raw calc: -0.6904\n"}
+,{"stream_name":"stdout","time":17.644005313,"data":"\n"}
+,{"stream_name":"stdout","time":17.644044563,"data":"Prediction #2:\n"}
+,{"stream_name":"stdout","time":17.644050319,"data":"  Individual: [-0.0005948278316522419, -0.0009043645113706589]\n"}
+,{"stream_name":"stdout","time":17.644056267,"data":"  Ensemble: -0.000750\n"}
+,{"stream_name":"stdout","time":17.644061318,"data":"  Scale factor: 0.001\n"}
+,{"stream_name":"stdout","time":17.644066488,"data":"  Allocation: 0.2504\n"}
+,{"stream_name":"stdout","time":17.644071433,"data":"  Raw calc: -0.7496\n"}
+,{"stream_name":"stdout","time":17.885495577,"data":"\n"}
+,{"stream_name":"stdout","time":17.885536522,"data":"Prediction #3:\n"}
+,{"stream_name":"stdout","time":17.885544004,"data":"  Individual: [-0.0008523649217802636, -0.0008599163847975433]\n"}
+,{"stream_name":"stdout","time":17.885565532,"data":"  Ensemble: -0.000856\n"}
+,{"stream_name":"stdout","time":17.885572097,"data":"  Scale factor: 0.001\n"}
+,{"stream_name":"stdout","time":17.885577825,"data":"  Allocation: 0.1439\n"}
+,{"stream_name":"stdout","time":17.885582965,"data":"  Raw calc: -0.8561\n"}
+,{"stream_name":"stdout","time":18.13779686,"data":"\n"}
+,{"stream_name":"stdout","time":18.137833953,"data":"Prediction #4:\n"}
+,{"stream_name":"stdout","time":18.137839873,"data":"  Individual: [-0.0006684509709037901, -0.0008415761985816061]\n"}
+,{"stream_name":"stdout","time":18.137846244,"data":"  Ensemble: -0.000755\n"}
+,{"stream_name":"stdout","time":18.137853284,"data":"  Scale factor: 0.001\n"}
+,{"stream_name":"stdout","time":18.13786038,"data":"  Allocation: 0.2450\n"}
+,{"stream_name":"stdout","time":18.137889962,"data":"  Raw calc: -0.7550\n"}
+,{"stream_name":"stdout","time":18.385718117,"data":"\n"}
+,{"stream_name":"stdout","time":18.385797559,"data":"Prediction #5:\n"}
+,{"stream_name":"stdout","time":18.38580316,"data":"  Individual: [-0.0005863381910029662, -0.000852519238833338]\n"}
+,{"stream_name":"stdout","time":18.38580732,"data":"  Ensemble: -0.000719\n"}
+,{"stream_name":"stdout","time":18.385811002,"data":"  Scale factor: 0.001\n"}
+,{"stream_name":"stdout","time":18.385814787,"data":"  Allocation: 0.2806\n"}
+,{"stream_name":"stdout","time":18.385818534,"data":"  Raw calc: -0.7194\n"}
+,{"stream_name":"stderr","time":23.125532022,"data":"/usr/local/lib/python3.11/dist-packages/traitlets/traitlets.py:2915: FutureWarning: --Exporter.preprocessors=[\"nbconvert.preprocessors.ExtractOutputPreprocessor\"] for containers is deprecated in traitlets 5.0. You can pass `--Exporter.preprocessors item` ... multiple times to add items to a list.\n"}
+,{"stream_name":"stderr","time":23.12560418,"data":"  warn(\n"}
+,{"stream_name":"stderr","time":23.178461321,"data":"[NbConvertApp] Converting notebook __script__.ipynb to html\n"}
+,{"stream_name":"stderr","time":24.790576024,"data":"[NbConvertApp] Writing 321742 bytes to __results__.html\n"}
+]
