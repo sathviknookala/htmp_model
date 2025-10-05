@@ -20,6 +20,14 @@ from .ensemble import ModelEnsemble, StackedEnsemble
 from .feature_selection import FeatureSelector
 from .hyperparameter_tuning import HyperparameterOptimizer, GridSearchOptimizer
 from .rolling_window import RollingWindowTrainer, AdaptiveWindowTrainer
+from .validation_utils import (
+    ValidationMetrics,
+    OverfittingDetector,
+    WalkForwardValidator,
+    LearningCurveAnalyzer,
+    PredictionAnalyzer,
+    create_validation_report
+)
 
 __all__ = [
     'GradientBoostingPredictor',
@@ -30,5 +38,11 @@ __all__ = [
     'HyperparameterOptimizer',
     'GridSearchOptimizer',
     'RollingWindowTrainer',
-    'AdaptiveWindowTrainer'
+    'AdaptiveWindowTrainer',
+    'ValidationMetrics',
+    'OverfittingDetector',
+    'WalkForwardValidator',
+    'LearningCurveAnalyzer',
+    'PredictionAnalyzer',
+    'create_validation_report'
 ] + __all_nn + __all_alt

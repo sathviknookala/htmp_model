@@ -1,0 +1,182 @@
+Warning: TensorFlow not available. Neural network models will not work.
+Warning: CatBoost not available. Install with: pip install catboost
+Warning: bayesian-optimization not available. Install with: pip install bayesian-optimization
+================================================================================
+ENHANCED MODEL TRAINING FOR TOP 17% PERFORMANCE
+================================================================================
+
+Loaded training data: (8990, 98)
+
+================================================================================
+ENHANCED FEATURE ENGINEERING
+================================================================================
+Using data from date_id 7000: 1990 samples
+
+Creating enhanced features...
+Creating enhanced features...
+  Adding technical indicators...
+  Adding market regime indicators...
+  Adding cross-sectional features...
+  Adding advanced statistical features...
+  Enhanced features created: 200 total columns
+Enhanced features created: 200 columns
+Valid training samples: 1990
+
+================================================================================
+ENHANCED FEATURE SELECTION
+================================================================================
+Training quick model for feature importance...
+Training on full dataset...
+
+Top 20 most important features:
+                   feature  importance
+153              zscore_60    1.260135
+152              zscore_40    0.197468
+151              zscore_20    0.053276
+104   target_rolling_min_5    0.051258
+105   target_rolling_max_5    0.039598
+170         bb_position_20    0.029510
+156                rank_60    0.015686
+171          williams_r_14    0.014932
+167         bb_position_10    0.012304
+134            momentum_20    0.007009
+107           target_ewm_5    0.005741
+135            momentum_40    0.004509
+110  target_rolling_min_10    0.004039
+155                rank_40    0.003911
+121  target_rolling_std_40    0.003774
+169            bb_lower_20    0.003267
+111  target_rolling_max_10    0.003195
+127  target_rolling_std_60    0.002906
+117  target_rolling_max_20    0.002864
+136            momentum_60    0.002540
+============================================================
+COMPREHENSIVE FEATURE SELECTION
+============================================================
+Starting with 196 features
+
+1. Filtering by null ratio...
+Removed 0 features with high null ratios
+   Remaining: 196 features
+
+2. Filtering by variance...
+Removed 66 low-variance features
+   Remaining: 130 features
+
+3. Removing highly correlated features...
+Removed 11 highly correlated features
+Dropped features: ['E3', 'zscore_20', 'rank_20', 'D1', 'V10', 'rank_40', 'V7', 'zscore_60', 'I5', 'zscore_40']...
+   Remaining: 119 features
+
+4. Selecting by feature importance...
+   Remaining: 119 features
+
+============================================================
+FEATURE SELECTION COMPLETE: 119 features selected
+============================================================
+
+Selected 119 enhanced features
+
+================================================================================
+TRAINING ENHANCED MODELS
+================================================================================
+
+1. Training Enhanced LightGBM...
+Training on full dataset...
+
+Top 20 most important features:
+              feature  importance
+95     bb_position_20    1.604202
+90            rank_60    1.162395
+14                E19    0.115060
+96      williams_r_14    0.092792
+69                 S8    0.090761
+29                 M1    0.083226
+81                 V9    0.037303
+97   vol_regime_ratio    0.016912
+30                M10    0.014118
+34                M14    0.011676
+77                 V4    0.007821
+55                 P5    0.006181
+48                P10    0.005494
+33                M13    0.004966
+101       P10_vs_mean    0.004704
+10                E15    0.004585
+63                 S2    0.003901
+58                 P8    0.003483
+59                 S1    0.003473
+46                 M9    0.003290
+
+2. Training Enhanced XGBoost...
+Training XGBoost on 1592 samples, validating on 398 samples...
+[0]	train-rmse:0.01094	val-rmse:0.00924
+[100]	train-rmse:0.00179	val-rmse:0.00351
+[200]	train-rmse:0.00100	val-rmse:0.00318
+[300]	train-rmse:0.00087	val-rmse:0.00311
+[400]	train-rmse:0.00086	val-rmse:0.00311
+[500]	train-rmse:0.00085	val-rmse:0.00310
+[510]	train-rmse:0.00085	val-rmse:0.00310
+
+Top 20 most important features:
+                 feature  importance
+95        bb_position_20    0.003387
+90               rank_60    0.001354
+14                   E19    0.000919
+96         williams_r_14    0.000790
+29                    M1    0.000376
+81                    V9    0.000368
+69                    S8    0.000364
+46                    M9    0.000168
+75                    V2    0.000159
+55                    P5    0.000115
+77                    V4    0.000081
+97      vol_regime_ratio    0.000065
+76                    V3    0.000050
+118  variance_ratio_5_20    0.000044
+93                rsi_14    0.000042
+63                    S2    0.000041
+31                   M11    0.000038
+10                   E15    0.000037
+30                   M10    0.000037
+87                 roc_5    0.000036
+
+3. Training Enhanced CatBoost...
+CatBoost not available: CatBoost is required. Install with: pip install catboost
+
+Trained 2 enhanced models: ['lightgbm', 'xgboost']
+
+================================================================================
+SAVING ENHANCED MODELS
+================================================================================
+Saved enhanced feature engineer
+Saved enhanced feature selector
+Saved enhanced allocation strategy
+Saved enhanced model metadata
+
+================================================================================
+CREATING ENHANCED SUBMISSION SCRIPT
+================================================================================
+Saved enhanced submission script
+
+================================================================================
+ENHANCED TRAINING COMPLETE!
+================================================================================
+
+Enhanced models trained: ['lightgbm', 'xgboost']
+Enhanced features: 119
+Training samples: 1990
+Feature engineering: Enhanced with technical indicators
+
+Next steps:
+1. Upload enhanced models to Kaggle
+2. Update kernel-metadata.json to use kaggle_submission_enhanced.py
+3. Test enhanced submission
+4. Submit for improved scores
+
+Expected improvement:
+• Better feature capture
+• More stable predictions
+• Higher correlation with market movements
+• Should reach top 17% rankings
+
+================================================================================
